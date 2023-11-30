@@ -1,28 +1,28 @@
 package com.example.chucknorrisjokes
 
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 object ApiService {
     private const val BASE_URL = "https://api.chucknorris.io/"
 
-    val moshi = Moshi.Builder()
-        .add(KotlinJsonAdapterFactory())
-        .build()
+    private val json = Json {
+        ignoreUnknownKeys = true
+    }
 
-    val logging = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
-    val client = OkHttpClient.Builder()
+    private val logging = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+    private val client = OkHttpClient.Builder()
         .addInterceptor(logging)
         .build()
 
-    val retrofit = Retrofit.Builder()
+    private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .client(client)
         .build()
 

@@ -46,10 +46,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun JokeScreen() {
-    // Obtain the ViewModel instance
     val viewModel: JokeViewModel = viewModel()
 
-    // State to hold the joke text
     val joke by viewModel.joke.observeAsState("")
 
     Column(
@@ -88,6 +86,6 @@ class JokeViewModel : ViewModel() {
     }
 
     init {
-        fetchNewJoke() // Fetch an initial joke
+        fetchNewJoke()
     }
 }

@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.0.0-Beta1"
+
 }
 
 android {
@@ -53,9 +55,9 @@ dependencies {
 
     //API'S
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation ("com.squareup.moshi:moshi-kotlin:1.12.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation ("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0") // Use a versão mais recente
 
 
     implementation ("androidx.compose.runtime:runtime-livedata:<compose_version>")
