@@ -1,5 +1,3 @@
-# ChuckNorrisJokesApi
-
 # Chuck Norris Facts App
 
 ## Descrição
