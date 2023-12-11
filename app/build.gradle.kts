@@ -53,11 +53,20 @@ android {
 
 dependencies {
 
-    //API'S
+//API'S
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
-    implementation ("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0") // Use a versão mais recente
+    implementation ("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+
+// Koin for Kotlin
+    implementation ("io.insert-koin:koin-core:3.1.2")
+
+// Koin for Android
+    implementation ("io.insert-koin:koin-android:3.1.2")
+
+// Koin AndroidX ViewModel scope features
+    implementation ("io.insert-koin:koin-androidx-viewmodel:3.1.2")
 
 
     implementation ("androidx.compose.runtime:runtime-livedata:<compose_version>")
